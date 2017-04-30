@@ -16,3 +16,8 @@
     * `Printer[Animal]` < `Printer[Cat]`
       
       `Printer[Animal]` is a subclass of `Printer[Cat]`; therefore, it can be used as a substitute of a `Printer[Cat]`, not inverse!
+
+* ##### [Collection-operators.sc](src/main/scala/collection-operators.sc)
+    * Seq operators
+    * List operators
+    * Map operators
