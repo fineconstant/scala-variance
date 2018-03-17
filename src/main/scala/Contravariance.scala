@@ -1,8 +1,6 @@
-package org.kduda.contravariant
-
 import model.{Animal, Cat}
 
-abstract class Printer[-A] {
+trait Printer[-A] {
   def print(value: A): Unit
 }
 
@@ -33,3 +31,23 @@ class CatPrinter extends Printer[Cat] {
   * *
   * Printer[Animal] is a subclass of Printer[Cat]; therefore, it can be used as a substitute of a Printer[Cat], not inverse!
   **/
+
+object Contravariance extends App {
+  val someCat: Cat = Cat("Boots")
+
+  def printMyCat(printer: Printer[Cat]): Unit = {
+    printer.print(someCat)
+  }
+
+  def printMyAnimal(printer: Printer[Animal]): Unit = {
+    printer.print(someCat)
+  }
+
+  val catPrinter: Printer[Cat] = new CatPrinter
+  val animalPrinter: Printer[Animal] = new AnimalPrinter
+  printMyCat(catPrinter) // parameter: Printer[Cat], passed: Printer[Cat]
+  printMyCat(animalPrinter) // parameter: Printer[Cat], passed: Printer[Animal]
+
+  printMyAnimal(animalPrinter) // parameter: Printer[Animal], passed: Printer[Animal]
+  printMyAnimal(catPrinter) // Printer[Animal], passed: Printer[Cat]
+}
