@@ -20,8 +20,3 @@
     * `Cat` is a subtype of `Animal`\
       `Printer[Animal]` is a subclass of `Printer[Cat]`; therefore, it can be used as a substitute of a `Printer[Cat]`, not inverse!
       `val x: Printer[Cat] = Printer[Animal]`
-
-* ##### [Collection-operators.sc](src/main/scala/collection-operators.sc)
-    * Seq operators
-    * List operators
-    * Map operators
