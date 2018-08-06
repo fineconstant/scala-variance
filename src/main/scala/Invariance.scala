@@ -1,21 +1,25 @@
 import model.{Animal, Cat, Dog}
 
-
-class Container[A](constValue: A) {
-  private var _value: A = constValue
+/**
+  * Invariant container
+  */
+class Container[A](newValue: A) {
+  private var _value: A = newValue
 
   def value: A = _value
   def value_=(x: A): Unit = _value = x
 }
 
+/**
+  * Container[Cat] is not a Container[Animal]
+  * Cannot assign Container[Cat] to Container[Animal]
+  * If that was possible we would end up with a Dog assigned to a Cat
+  */
 object Invariance extends App {
-  val catContainer: Container[Cat] = new Container(Cat("Felix"))
+  val catContainer: Container[Cat] = new Container(Cat("Lucifurr"))
 
-  // Container[Cat] is not a Container[Animal]
-  // Cannot assign Container[Cat] to Container[Animal]
-  val animalContainer: Container[Animal] = catContainer
-
-  // If that was possible we'd end up with a Dog assigned to a Cat
-  animalContainer.value = Dog("Spot")
-  val cat: Cat = catContainer.value
+  // does not compile
+  //val animalContainer: Container[Animal] = catContainer
+  //animalContainer.value = Dog("Rambo")
+  //val cat: Cat = catContainer.value
 }
