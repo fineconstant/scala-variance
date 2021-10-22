@@ -6,6 +6,7 @@
 * #### [Covariant](src/main/scala/Covariance.scala)
     * Usage: `class Bar[+A]`
     * Definition: If `A` is a subtype of `B` then `List[A]` is a subtype of `List[B]` 
+    * Covariant position: used in places of return types, output in general
     * Example: \
       `Cat` is a subtype of `Animal`, `Dog` is a subtype of `Animal` as well.\
       `List[Cat]` is a `List[Animal]` and a `List[Dog]` is also a `List[Animal]`.\
@@ -17,7 +18,8 @@
     * Usage `class Baz[-A]`
     * Definition: \
       Contravariance is the opposite of covariance.\
-      If `A` is a subtype of `B` then `Writer[B]` is a subtype of `Writer[A]` 
+      If `A` is a subtype of `B` then `Writer[B]` is a subtype of `Writer[A]`
+    * Contravariant position: used in places of parameters - input types, input in general
     * `Cat` is a subtype of `Animal`\
       `Printer[Animal]` is a subclass of `Printer[Cat]`; therefore, it can be used as a substitute of a `Printer[Cat]`, not inverse!
       `val x: Printer[Cat] = Printer[Animal]`. \
